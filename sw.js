@@ -1,21 +1,20 @@
-
-self.addEventListener('install', function(e) {
-  e.waitUntil(
-    caches.open('infinitrix-store').then(function(cache) {
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open('v1').then(cache => {
       return cache.addAll([
         '/',
-        '/offline.html',
+        '/index.html',
+        '/style.css',
+        '/manifest.json'
       ]);
     })
   );
 });
 
-self.addEventListener('fetch', function(e) {
-  e.respondWith(
-    fetch(e.request).catch(function() {
-      return caches.match(e.request).then(function(response) {
-        return response || caches.match('/offline.html');
-      });
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
     })
   );
 });
