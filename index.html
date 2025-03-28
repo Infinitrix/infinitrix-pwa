@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Infinitrix News PWA</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="favicon.ico">
+  <meta name="theme-color" content="#1a1a1a"/>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
+</head>
+<body>
+  <h1>Infinitrix News PWA is Active</h1>
+  <p>This is a basic placeholder. Your site is now PWA-enabled.</p>
+</body>
+</html>
