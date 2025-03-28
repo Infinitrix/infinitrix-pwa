@@ -1,43 +1,36 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#000000" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#000000"/>
   <title>Infinitrix News PWA</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="favicon.ico" />
   <link rel="stylesheet" href="style.css" />
-  <script src="category-sync.js" defer></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('sw.js');
-      });
-    }
-  </script>
 </head>
 <body>
-  <header class="top-nav">
-    <h1>Infinitrix News</h1>
-    <button id="darkToggle">Toggle Dark Mode</button>
+  <header>
+    <nav>
+      <h1>Infinitrix News</h1>
+      <button id="dark-toggle">Toggle Dark Mode</button>
+    </nav>
+    <div id="category-cloud"></div>
   </header>
-
-  <aside id="category-cloud" class="category-cloud">
-    <h2>Categories</h2>
-    <div id="label-list"></div>
-  </aside>
-
-  <main>
-    <h2>Welcome to Infinitrix News</h2>
-    <p>This is your PWA-powered news site, now enhanced with Blogger category sync.</p>
+  <main id="news-feed">
+    <p>Loading latest news...</p>
   </main>
-
+  <footer>
+    <p>© 2025 Infinitrix News</p>
+  </footer>
+  <script src="script.js"></script>
   <script>
-    // Dark mode toggle
-    document.getElementById('darkToggle').addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-    });
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
   </script>
 </body>
 </html>
